@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.smart.dao.UserMapper">
+	<resultMap type="com.smart.domain.User" id="User">
+		<id column="userId" jdbcType="VARCHAR" property="userId" />
+		<result column="userName" jdbcType="VARCHAR" property="userName" />
+		<result column="password" jdbcType="VARCHAR" property="password" />
+		<result column="md5pass" jdbcType="VARCHAR" property="md5pass" />
+	</resultMap>
+	
+	<select id="selectUserByPrimaryKey" parameterType="String" resultType="User">
+		select userId, userName, password, md5pass 
+		from user
+		where userId = #{userId, jdbcType=VARCHAR}
+	</select>
+	<select id="selectAllUser" resultType="User">
+		select userId, userName, password, md5pass 
+		from user
+	</select>
+	<insert id="insert" parameterType="User">
+		insert into user(userId, userName,password,md5pass)
+		values (#{userId,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{md5pass,jdbcType=VARCHAR})
+	</insert>
+	<delete id="deleteUserByPrimaryKey" parameterType="String">
+		delete from user
+		where userId = #{userId, jdbcType=VARCHAR}
+	</delete>	
+</mapper>
