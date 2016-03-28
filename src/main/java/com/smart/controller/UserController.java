@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.smart.domain.User;
-import com.smart.service.UserService;
+import com.smart.service.UserServiceInf;
 
 /**
 * @author : gaoweibupt
@@ -19,7 +19,7 @@ import com.smart.service.UserService;
 public class UserController {
 
 	@Autowired
-	private UserService userService;
+	private UserServiceInf userService;
 
 	@RequestMapping("/login")
 	public String showLogin(HttpServletRequest request, Model model){
